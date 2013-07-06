@@ -3,9 +3,11 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+  http = require('http'),
+  path = require('path'),
+  stylus = require('stylus'),
+  redis = require('redis');
 
 var app = express();
 
@@ -26,7 +28,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', function() {
+app.get('/', function(req,res) {
   res.render('index.jade');
 });
 
