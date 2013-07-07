@@ -3,7 +3,8 @@ var express = require('express'),
   path = require('path'),
   stylus = require('stylus'),
   db = require('./db'),
-  twilio = require('twilio');
+  twilio = require('twilio'),
+  command = require('./command');
 
 var client = twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
 
@@ -36,8 +37,7 @@ receive = function(req, res) {
   var body = req.query.Body;
   var from = req.query.From;
 
-  //do stuff with body
-  var response = 'parrot: ' + body;
+  var response = command.parse(from, body);;
 
   var resp = new twilio.TwimlResponse();
   resp.sms(response);

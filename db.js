@@ -33,7 +33,6 @@ exports.connect = function connect(url) {
 //passed a phoneNumber and a player object
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
   Player.create({phone: phoneNumber,
-    gameState: playerObject.gameState,
     balance: playerObject.balance,
     users: playerObject.users,
     employees: playerObject.employees,
@@ -73,35 +72,7 @@ exports.send = function send() {
   Player.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
 };
 
-exports.remove = function remove(phoneNumber) {
+exports.remove = exports.delete = function remove(phoneNumber) {
   User.remove({phoneNumber: phoneNumber});
 };
 
-//Add setter functions?
-
-/* SHOULD NOT NEED THIS INFORMATION
-exports.getGameState = function(phoneNumber) {
-  return User.find({phoneNumber: phoneNumber} , 'gamestate', function(err, user) {
-    return user.gamestate;
-  })
-}
-
-var getCurrentBalance = function(phoneNumber) {
-  return User.find({phoneNumber: phoneNumber}, 'currentBalance', function(err, user) {
-    return user.currentBalance;
-  })
-}
-var getUsers = function(phoneNumber) {
-  return User.find({phoneNumber: phoneNumber}, 'users', function(err, user) {
-    return user.users;
-  });
-}
-var getEmployees = function(phoneNumber) {
-
-}
-var getAdvertisers = function(phoneNumber) {
-
-}
-var getCompetitors = function(phoneNumber) {
-
-}*/
