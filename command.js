@@ -19,9 +19,11 @@ var DEFAULT_INVESTORS = 5;
 var DEFAULT_MONEY = 500;
 var DEFAULT_RPU = 1;
 
-var parse = function(phoneNumber, text) {
+exports.parse = function(phoneNumber, text) {
 	var input = text.split(" ");
 	var commandFunc = commands[input.shift()];
+
+	return typeof commandFunc;
 
 	if(_.isFunction(commandFunc)) {
 		var output = commandFunc(phoneNumber, input);

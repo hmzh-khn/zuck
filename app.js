@@ -37,7 +37,7 @@ receive = function(req, res) {
   var body = req.query.Body;
   var from = req.query.From;
 
-  var response = command.parse(from, body);;
+  var response = command.parse(from, body.toLowerCase());;
 
   var resp = new twilio.TwimlResponse();
   resp.sms(response);
