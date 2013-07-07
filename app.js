@@ -1,14 +1,8 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express'),
   http = require('http'),
   path = require('path'),
   stylus = require('stylus'),
-  db = require('mongoose'),
-  Schema = db.Schema,
+  db = require('./db'),
   twilio = require('twilio');
 
 var client = twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
@@ -26,21 +20,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
-});
-
-
-
-var User = new Schema({
-  phone: String
-});
-
-db.model('User', User);
-
-db.connect('mongodb://localhost/zuck', function(err, res) {
-  if (!err) {console.log('connected to mongo!');} else {console.log('connection denied');}
-});
-
- 
+}); 
 
 app.configure('development', function(){
   app.use(express.errorHandler());

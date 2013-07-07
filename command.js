@@ -20,6 +20,8 @@ var initGame = function(phoneNumber) {
 				 competitors: DEFAULT_COMPETITORS,
 				 features: DEFAULT_FEATURES});
 };
+
+//done
 var ipo = function(phoneNumber) {
 	//remove user from db
 	User.remove({phoneNumber: phoneNumber});
