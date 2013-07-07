@@ -2,7 +2,7 @@ db = require('mongoose'),
   Schema = db.Schema;
 
 var playerSchema = db.Schema({
-  phone: Number,
+  phoneNumber: Number,
   gameState: Boolean,
   
   balance: Number,
@@ -14,13 +14,13 @@ var playerSchema = db.Schema({
 });
 
 var Player = db.model('Player', playerSchema);
-var currentPlayerObj;
 
 //initiate mongo connections
 exports.connect = function connect(url) {
-  url = url || 'mongodb://localhost/zuck';
+  url = 'mongodb://localhost/zuck';
 
   db.connect(url, function(err, res) {
+    console.log('ran connect function');
     if (!err) {
       console.log('connected to mongo!');
     } 
@@ -32,27 +32,44 @@ exports.connect = function connect(url) {
 
 //passed a phoneNumber and a player object
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
-  Player.create({phone: phoneNumber,
+  process.DATA[phoneNumber] = {
+    phoneNumber: phoneNumber,
     balance: playerObject.balance,
     users: playerObject.users,
     employees: playerObject.employees,
     rpu: playerObject.rpu,
     competitors: playerObject.competitors,
     features: playerObject.features
-  });
+  };
+
+  /*Player.create({
+    phoneNumber: phoneNumber,
+    balance: playerObject.balance,
+    users: playerObject.users,
+    employees: playerObject.employees,
+    rpu: playerObject.rpu,
+    competitors: playerObject.competitors,
+    features: playerObject.features
+  });*/
 };
 
 //get entire Player object
 exports.getPlayer = function getPlayer(phoneNumber) {
-  Player.find({phoneNumber:phoneNumber}, function(err, player) {
+  return (process.DATA[phoneNumber])? process.DATA[phoneNumber] : null;
+
+  /*Player.find({phoneNumber:phoneNumber}, function(err, player) {
     currentPlayerObj = player; //sets this to variable for ease of updating?
     return player;
-  });
+  });*/
 };
 
 //set individual values of the object to be sent back
-exports.set = function set(property, value) {
-  if (typeof property === 'string') {
+exports.set = function set(phoneNumber, property, value) {
+  if(process.DATA[phoneNumber][property]) {
+    process.DATA[phoneNumber][property] = value;
+  }
+
+  /*if (typeof property === 'string') {
     currentPlayerObj[property] = (currentPlayerObj[property])? value : undefined;
     return;
   }
@@ -62,17 +79,20 @@ exports.set = function set(property, value) {
       prop = (prop[property[i]])? prop[property[i]] : undefined;
     }
     prop[property[property.length - 1]] = (prop[property - 1])? value : undefined;
-  }
+  }*/
   //if the property exists, update it, otehrwise do nothing
   //potential fallback, what a property is already nonexistant?
 };
 
 //update the data
-exports.send = function send() {
+/*exports.send = function send() {
   Player.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
-};
+};*/
 
 exports.remove = exports.delete = function remove(phoneNumber) {
-  User.remove({phoneNumber: phoneNumber});
+  delete process.DATA[phoneNumber];
+
+
+  //User.remove({phoneNumber: phoneNumber});
 };
 
