@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "Zuck",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
     "stylus": "*",
     "twilio": "*",
     "underscore":"*",
-    "mongodb":"*"
+    "redis":"*",
+    "hiredis":"*"
   }
 }
