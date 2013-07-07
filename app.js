@@ -25,6 +25,8 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
+
+
 var User = new Schema({
   phone: String
 });
@@ -32,8 +34,10 @@ var User = new Schema({
 db.model('User', User);
 
 db.connect('mongodb://localhost/zuck', function(err, res) {
-  if (!err) {console.log('connected to mongo!';)} else {console.log('connection denied');}
+  if (!err) {console.log('connected to mongo!');} else {console.log('connection denied');}
 });
+
+
 
 app.configure('development', function(){
   app.use(express.errorHandler());
