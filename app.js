@@ -7,7 +7,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path'),
   stylus = require('stylus'),
-  redis = ('redis'),
+  redis = require('redis'),
   CONFIG = require('./CONFIG.json');
 
 var app = express();
@@ -26,10 +26,14 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-var redis_cli = redis.createClient(6379,'arson-media.com',{authpass:CONFIG.redispass});
+var redis_cli = redis.createClient(6379,'arson-media.com');
 
 redis_cli.on('connect',function() {
   console.log('connected!');
+  redis_cli.auth(CONFIG.redispass);
+  console.log('authorized!');
+  redis_cli.set('test','test');
+  console.log(redis_cli.get('test'));
 });
 
 redis_cli.on('error',function() {
