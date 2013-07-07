@@ -28,6 +28,19 @@ exports.connect = function connect(url) {
   });
 };
 
+//passed a phoneNumber and a player object
+exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
+  User.create({phoneNumber: phoneNumber,
+    gameState: playerObject.gameState,
+    currentBalance: playerObject.currentBalance,
+    users: playerObject.users,
+    employees: playerObject.employees,
+    advertisers: playerObject.advertisers,
+    competitors: playerObject.competitors,
+    features: playerObject.features
+  });
+};
+
 //get entire Player object
 exports.getPlayer = function getPlayer(phoneNumber) {
   User.find({phoneNumber:phoneNumber}, function(err, player) {

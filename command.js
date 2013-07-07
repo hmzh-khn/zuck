@@ -11,14 +11,6 @@ var GAMESTATE_FINISHED = false;
 // Game state functions
 var initGame = function(phoneNumber) {
 	//register user as player in db
-	User.create({phoneNumber: phoneNumber,
-				 gameState: GAMESTATE_STARTED,
-				 currentBalance: DEFAULT_MONEY,
-				 users: DEFAULT_USERS,
-				 employees: DEFAULT_EMPLOYEES,
-				 advertisers: DEFAULT_ADVERTISERS,
-				 competitors: DEFAULT_COMPETITORS,
-				 features: DEFAULT_FEATURES});
 };
 
 //done
@@ -45,7 +37,7 @@ var state = function(phoneNumber) {
 	
 	
 };
-var report = function(phoneNumber) {
+var report = function(phoneNumber, options) {
 
 };
 
