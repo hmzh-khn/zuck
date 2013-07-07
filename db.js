@@ -53,9 +53,19 @@ exports.getPlayer = function getPlayer(phoneNumber) {
 
 //set individual values of the object to be sent back
 exports.set = function set(property, value) {
+  if (typeof property === 'string') {
+    currentPlayerObj[property] = (currentPlayerObj[property])? value : undefined;
+    return;
+  }
+  else {
+    var prop = property[0];
+    for(var i = 1; i < property.length - 1) {
+      prop = (prop[property[i]])? prop[property[i]] : undefined;
+    }
+    prop[property[property.length - 1]] = (prop[property - 1])? value : undefined;
+  }
   //if the property exists, update it, otehrwise do nothing
   //potential fallback, what a property is already nonexistant?
-  currentPlayerObj[property] = (currentPlayerObj[property])? currentPlayerObj[property] : undefined;
 };
 
 //update the data
