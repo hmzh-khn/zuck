@@ -1,18 +1,20 @@
-
+//hi
 /**
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+  http = require('http'),
+  path = require('path'),
+  stylus = require('stylus'),
+  redis = ('redis'),
+  CONFIG = require('./CONFIG.json');
 
 var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
+  app.set('redisPort', 6379);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -24,11 +26,21 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
+var redis_cli = redis.createClient(6379,'arson-media.com',{authpass:CONFIG.redispass});
+
+redis_cli.on('connect',function() {
+  console.log('connected!');
+});
+
+redis_cli.on('error',function() {
+  console.error('ERROR!');
+});
+
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', function() {
+app.get('/', function(req,res) {
   res.render('index.jade');
 });
 
