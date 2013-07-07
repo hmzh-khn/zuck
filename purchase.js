@@ -10,7 +10,7 @@ var competitor = require('./competitorGeneration')
 if (offer > competitor.worth - tolerance) {
 	db.set(users,(users) + competitor.users);
 	db.set(rpu, (rpu)*((users)/(users + competitor.users)) + competitor.rpu*((competitor.users)/(users + competitor.users)));
-	db.set(emp, (emp) + competitor.emp);
+	db.set(employees, (emp) + competitor.emp);
 	db.set(balance, (balance) - offer);
 }
 db.send()

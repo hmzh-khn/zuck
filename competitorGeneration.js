@@ -8,11 +8,11 @@ var player = db.getPlayer();
 
 exports.competitorGeneration = function competitorGeneration(competitor_name) {
 
-var competitor.users = rand(0,player.users),
-competitor.rpu = rand(0,player.rpu),
-competitor.emp = rand(0,player.emp),
+var competitor.users = Math.random() * (player.users);
+var competitor.rpu = Math.random() * (player.rpu);
+var competitor.employees = Math.random() * (player.employees);
 
-competitor.worth = rand(0,player.balance),
-tolerance = .1*competitor.worth;
+var competitor.worth = Math.random() * (player.balance);
+var tolerance = .1*competitor.worth;
 return competitor
 };

@@ -5,8 +5,10 @@ db = require('./db');
 var player = db.getPlayer();
 	
 var rand = Math.random() * (max - min) + min
-db.set('users',(users) + rand*(users))
+db.set(users,(users) + rand*(users))
 
 var rand = Math.random() * (max - min) + min
-db.set('rpu', (rpu) + rand*(rpu))
+db.set(rpu, (rpu) + rand*(rpu))
 };
+
+db.set(employees, employees + 10)
