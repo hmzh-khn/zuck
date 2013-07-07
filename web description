@@ -4,15 +4,15 @@ Every turn, the player is given an action; they can either take the action or sk
 
 Actions usually take the form of new features to be implemented, but the user is also given the option to raise or lower the general obtrusiveness of advertisements, or even buy out rival companies.
 
-Developed at CodeDay Portland 2 by a team consisting of
-
-Hamzah Khan
-Hannah Posey-Scholl
-Emma Barber
-Lukas Schwab
-Kevin
-Alex Haupt
+Developed at CodeDay Portland 2 by
+	Hamzah Khan
+	Hannah Posey-Scholl
+	Emma Barber
+	Lukas Schwab
+	Kevin
+	Alex Haupt
 
 Special Thanks to
-George Matter
-Tyler Menezes
+	George Matter
+	Tyler Menezes
+	Puppet Labs
