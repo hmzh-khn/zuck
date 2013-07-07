@@ -45,21 +45,21 @@ var getCompetitors = function(phoneNumber) {
 	});
 }
 
-var setGameState = function(phoneNumber, state) {
-	
+var setGameState = function(phoneNumber, newState) {
+	User.update({phoneNumber: phoneNumber}, {gameState: newState});
 }
 var setCurrentBalance = function(phoneNumber, newBalance) {
-
+	User.update({phoneNumber: phoneNumber}, {currentBalance: newBalance});
 }
 var setUsers = function(phoneNumber, newUsers) {
-
+	User.update({phoneNumber: phoneNumber}, {users: newUsers});
 }
 var setEmployees = function(phoneNumber, newEmployees) {
-
+	User.update({phoneNumber: phoneNumber}, {employees: newEmployees});
 }
 var setAdvertisers = function(phoneNumber, newAdvertisers) {
-
+	User.update({phoneNumber: phoneNumber}, {advertisers: newAdvertisers});
 }
 var setCompetitors = function(phoneNumber, newCompetitors) {
-
+	User.update({phoneNumber: phoneNumber}, {competitors: newCompetitors});
 }
