@@ -73,6 +73,10 @@ exports.send = function send() {
   Player.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
 };
 
+exports.remove = function remove(phoneNumber) {
+  User.remove({phoneNumber: phoneNumber});
+};
+
 //Add setter functions?
 
 /* SHOULD NOT NEED THIS INFORMATION

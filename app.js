@@ -26,6 +26,8 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+db.connect();
+
 app.get('/', function(req,res) {
   res.render('index.jade');
 });
