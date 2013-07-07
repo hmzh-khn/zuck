@@ -11,5 +11,7 @@
     "stylus": "*",
     "twilio": "*",
     "underscore":"*",
+    "mongodb":"*",
+    "mongoose":"*"
   }
 }
