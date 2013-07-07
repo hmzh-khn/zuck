@@ -1,15 +1,7 @@
+process.DATA = {};
+
 var db = require('./db'),
 	_ = require('underscore');
-
-var commands = {
-	"new": initGame,
-	quit: ipo,
-	ipo: ipo,
-	help1: help1,
-	report: report,
-	buy: buy,
-	develop: devProject
-};
 
 var DEFAULT_USERS = 5;
 var DEFAULT_COMPETITORS = [];
@@ -19,21 +11,6 @@ var DEFAULT_INVESTORS = 5;
 var DEFAULT_MONEY = 500;
 var DEFAULT_RPU = 1;
 
-exports.parse = function(phoneNumber, text) {
-	var input = text.split(" ");
-	var commandFunc = commands[input.shift()];
-
-	return typeof commandFunc;
-
-	if(_.isFunction(commandFunc)) {
-		var output = commandFunc(phoneNumber, input);
-		return output;
-	}
-	else {
-		return "Command is not recognized. Please try again or see help for more information."
-	}
-};
-
 // create user through db API
 var initGame = function(phoneNumber) {
 	db.initPlayer(phoneNumber, {
@@ -42,7 +19,7 @@ var initGame = function(phoneNumber) {
 		employees: DEFAULT_EMPLOYEES,
 		rpu: DEFAULT_RPU,
 		competitors: DEFAULT_COMPETITORS,
-		features: DEFAULT_FEATURES,
+		features: DEFAULT_FEATURES
 	});
 
 	return "New game created for " + phoneNumber + ". See help for more information."
@@ -76,7 +53,7 @@ var report = function(phoneNumber, options) {
 	var player = db.getPlayer(phoneNumber);
 	var res = "STATUS REPORT\n";
 
-	if(_isEmpty(options)) {
+	if(_.isEmpty(options)) {
 		_.each(options, function(value, key) {
 			res += key + ": " + player[key] + "\n";
 		});	
@@ -97,4 +74,27 @@ var buy = function(phoneNumber) {
 
 var devProject = function(phoneNumber, project) {
 	
+};
+
+var commands = {
+	"new": initGame,
+	quit: ipo,
+	ipo: ipo,
+	help1: help1,
+	report: report,
+	buy: buy,
+	develop: devProject
+};
+
+exports.parse = function(phoneNumber, text) {
+	var input = text.split(" ");
+	var commandFunc = commands[input.shift()];
+
+	if(_.isFunction(commandFunc)) {
+		var output = commandFunc(phoneNumber, input);
+		return output;
+	}
+	else {
+		return "Command is not recognized. Please try again or see help for more information."
+	}
 };

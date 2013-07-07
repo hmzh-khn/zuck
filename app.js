@@ -27,10 +27,16 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-db.connect();
+//connects to nodejitsu
+//db.connect('mongodb://nodejitsu:2f433db5cd7603ca7382c95769d9ae59@dharma.mongohq.com:10063/nodejitsudb2038265378');
+
+//var dbBarf = db.getPlayer('+15037296270');
 
 app.get('/', function(req,res) {
-  res.render('index.jade');
+  //if(dbBarf)
+    res.render('index.jade');
+  //else
+    //res.render('index.jade', {'title': 'FAIL'});
 });
 
 receive = function(req, res) {
