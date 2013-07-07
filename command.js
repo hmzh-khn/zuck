@@ -69,7 +69,7 @@ var buy = function(phoneNumber, offer) {
 	return buyout.negotiation(offer);
 };
 
-var devProject = function(phoneNumber, project) {
+var devProject = function(phoneNumber,project) {
 	var develop = require('./developModule');
 	develop.applyModule(project);
 };

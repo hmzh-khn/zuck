@@ -1,4 +1,4 @@
-exports.rand = function modify(min1,max1,min2,max2) {
+
 var addon = require('./addons');
 db = require('./db');
 
@@ -29,8 +29,6 @@ exports.applyModule = function applyModule(name) {
   db.set(player.phoneNumber,'users',(users) + rand*(users))
 
   var randRpu = Math.random() * (mod.max2 - mod.min2) + mod.min2
-  db.set(player.phoneNumber,'rpu', (player.rpu) + randUsers*(player.rpu))
-  };
-
-  db.set(player.phoneNumber,'employees', player.employees + 10)
+  db.set(player.phoneNumber,'rpu', (player.rpu) + randUsers*(player.rpu));
+  db.set(player.phoneNumber,'employees', player.employees + 10);
 };
