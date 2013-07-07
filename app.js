@@ -26,7 +26,7 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-var redis_cli = redis.createClient(6379,'arson-media.com');
+var redis_cli = redis.createClient(6379,'127.0.0.1');
 
 redis_cli.on('connect',function() {
   console.log('connected!');

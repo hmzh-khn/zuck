@@ -19,5 +19,7 @@ client.sendSms({
         console.log(responseData.from); // outputs "+9712051258"
         console.log(responseData.body); // outputs "does this work?"
 
+    } else {
+        console.log(err);
     }
 });
