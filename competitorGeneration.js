@@ -13,6 +13,6 @@ var competitor.rpu = Math.random() * (player.rpu);
 var competitor.employees = Math.random() * (player.employees);
 
 var competitor.worth = Math.random() * (player.balance);
-var tolerance = .1*competitor.worth;
+var competitor.tolerance = .1*competitor.worth;
 return competitor
 };
