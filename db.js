@@ -34,12 +34,12 @@ exports.connect = function connect(url) {
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
   process.DATA[phoneNumber] = {
     phoneNumber: phoneNumber,
-    balance: playerObject.balance,
-    users: playerObject.users,
-    employees: playerObject.employees,
-    rpu: playerObject.rpu,
-    competitors: playerObject.competitors,
-    features: playerObject.features
+    balance: playerObject.balance || 500,
+    users: playerObject.users || 5,
+    employees: playerObject.employees || 5,
+    rpu: playerObject.rpu || 1,
+    competitors: playerObject.competitors || [],
+    features: playerObject.features || []
   };
 
   /*Player.create({
