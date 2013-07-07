@@ -10,6 +10,8 @@ var client = twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa4
 
 var app = express();
 
+global.DATA = {};
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -29,21 +31,19 @@ app.configure('development', function(){
 
 //connects to nodejitsu
 //db.connect('mongodb://nodejitsu:2f433db5cd7603ca7382c95769d9ae59@dharma.mongohq.com:10063/nodejitsudb2038265378');
-
+ 
 //var dbBarf = db.getPlayer('+15037296270');
 
 app.get('/', function(req,res) {
-  //if(dbBarf)
+    console.log(global);
     res.render('index.jade');
-  //else
-    //res.render('index.jade', {'title': 'FAIL'});
 });
 
-receive = function(req, res) {
+var receive = function receive (req, res) {
   var body = req.query.Body;
   var from = req.query.From;
 
-  var response = command.parse(from, body.toLowerCase());;
+  var response = command.parse(from, body);
 
   var resp = new twilio.TwimlResponse();
   resp.sms(response);

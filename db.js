@@ -32,7 +32,7 @@ exports.connect = function connect(url) {
 
 //passed a phoneNumber and a player object
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
-  process.DATA[phoneNumber] = {
+  global.DATA[phoneNumber] = {
     phoneNumber: phoneNumber,
     balance: playerObject.balance || 500,
     users: playerObject.users || 5,
@@ -42,7 +42,8 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
     features: playerObject.features || []
   };
 
-  /*Player.create({
+  console.log(global.DATA);
+    /*Player.create({
     phoneNumber: phoneNumber,
     balance: playerObject.balance,
     users: playerObject.users,
@@ -55,7 +56,7 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
 
 //get entire Player object
 exports.getPlayer = function getPlayer(phoneNumber) {
-  return (process.DATA[phoneNumber])? process.DATA[phoneNumber] : null;
+  return (global.DATA[phoneNumber])? global.DATA[phoneNumber] : initPlayer();
 
   /*Player.find({phoneNumber:phoneNumber}, function(err, player) {
     currentPlayerObj = player; //sets this to variable for ease of updating?
@@ -65,8 +66,8 @@ exports.getPlayer = function getPlayer(phoneNumber) {
 
 //set individual values of the object to be sent back
 exports.set = function set(phoneNumber, property, value) {
-  if(process.DATA[phoneNumber][property]) {
-    process.DATA[phoneNumber][property] = value;
+  if(global.DATA[phoneNumber][property]) {
+    global.DATA[phoneNumber][property] = value;
   }
 
   /*if (typeof property === 'string') {
@@ -90,7 +91,7 @@ exports.set = function set(phoneNumber, property, value) {
 };*/
 
 exports.remove = exports.delete = function remove(phoneNumber) {
-  delete process.DATA[phoneNumber];
+  delete global.DATA[phoneNumber];
 
 
   //User.remove({phoneNumber: phoneNumber});
