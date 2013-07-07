@@ -11,3 +11,5 @@ var userSchema = mongoose.Schema({
 	features: Array
 	
 });
+
+var User = mongoose.model('User', schema);
