@@ -10,6 +10,6 @@
     "jade": "*",
     "stylus": "*",
     "twilio": "*",
-    "underscore":"*",
+    "underscore":"*"
   }
 }
