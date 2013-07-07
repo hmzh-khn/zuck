@@ -18,7 +18,9 @@ var currentPlayerObj;
 
 //initiate mongo connections
 exports.connect = function connect(url) {
-  db.connect('mongodb://localhost/zuck', function(err, res) {
+  url = url || 'mongodb://localhost/zuck';
+
+  db.connect(url, function(err, res) {
     if (!err) {
       console.log('connected to mongo!');
     } 
