@@ -1,4 +1,4 @@
-boolean command;
+var command;
 
 var checkIfCommand(message) {
 	command = false; //sets command to false when used again.

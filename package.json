@@ -11,7 +11,5 @@
     "stylus": "*",
     "twilio": "*",
     "underscore":"*",
-    "redis":"*",
-    "hiredis":"*"
   }
 }
