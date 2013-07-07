@@ -1,11 +1,12 @@
 //require the Twilio module and create a REST client
-var client = require('twilio')('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
+var twilio = require('twilio')
+var client = twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
 
 //Send an SMS text message
 client.sendSms({
 
-    to:'+5037296270', // Any number Twilio can deliver to
-    from: '+9712051258', // A number you bought from Twilio and can use for outbound communication
+    to:'+15037296270', // Any number Twilio can deliver to
+    from: '+19712051258', // A number you bought from Twilio and can use for outbound communication
     body: 'does this work?' // this of the SMS message
 
 }, function(err, responseData) { //this function is executed when a response is received from Twilio
