@@ -12,12 +12,12 @@ var modules = {
 	aprFools: new Addon(0, .1, 0, 0),
 	wait: new Addon(0, .1, 0, .1),
 	games: new Addon(0, .1, 0, .1),
-	paid: newAddon(-.2, .2, 0, .1),
-	face: newAddon(0, .1, 0, .1),
-	wingman: newAddon(0, .1, 0, .1),
-	adsSelect: newAddon(0, .1, 0, .1),
-	adsUp: newAddon(0, .1, 0, .1),
-	adsDown: newAddon(0, .1, 0, .1);
+	paid: new Addon(-.2, .2, 0, .1),
+	face: new Addon(0, .1, 0, .1),
+	wingman: new Addon(0, .1, 0, .1),
+	adsSelect: new Addon(0, .1, 0, .1),
+	adsUp: new Addon(0, .1, 0, .1),
+	adsDown: new Addon(0, .1, 0, .1);
 };
 
 var player = db.getPlayer();
