@@ -56,7 +56,7 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
 
 //get entire Player object
 exports.getPlayer = function getPlayer(phoneNumber) {
-  return (global.DATA[phoneNumber])? global.DATA[phoneNumber] : initPlayer();
+  return (global.DATA[phoneNumber])? global.DATA[phoneNumber] : this.initPlayer(phoneNumber,{});
 
   /*Player.find({phoneNumber:phoneNumber}, function(err, player) {
     currentPlayerObj = player; //sets this to variable for ease of updating?

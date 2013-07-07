@@ -28,14 +28,14 @@ var initGame = function(phoneNumber) {
 //remove user's game
 var ipo = quit = function(phoneNumber) {
 	db.remove(phoneNumber);
-	return phoneNumber + " has been successfully removed from our database.";
+	return phoneNumber + " has been successfully removed from our database. \nP.S. Botched! You lose! - Lukas";
 };
 
 // User information
 var help1 = function(phoneNumber) {
 	help = "Zuck is a text-based Facebook Tycoon game.\n Text \
 	'help' followed by any of these commands: 'new', 'buy', 'develop', \
-	'report', 'competition', 'ipo'."
+	'report', 'competition', 'ipo'.";
 
 	return help;
 
@@ -64,12 +64,12 @@ var report = function(phoneNumber, options) {
 };
 
 //User interaction
-var buy = function(phoneNumber, offer) {
+var buy = function buy(phoneNumber, offer) {
 	var buyout = require('./purchase');
 	return buyout.negotiation(offer);
 };
 
-var devProject = function(phoneNumber,project) {
+var devProject = function(phoneNumber, project) {
 	var develop = require('./developModule');
 	develop.applyModule(project);
 };
