@@ -30,12 +30,12 @@ exports.connect = function connect(url) {
 
 //passed a phoneNumber and a player object
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
-  User.create({phoneNumber: phoneNumber,
+  Player.create({phone: phoneNumber,
     gameState: playerObject.gameState,
-    balance: playerObject.currentBalance,
+    balance: playerObject.balance,
     users: playerObject.users,
     employees: playerObject.employees,
-    rpu: playerObject.advertisers,
+    rpu: playerObject.rpu,
     competitors: playerObject.competitors,
     features: playerObject.features
   });
@@ -43,7 +43,7 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
 
 //get entire Player object
 exports.getPlayer = function getPlayer(phoneNumber) {
-  User.find({phoneNumber:phoneNumber}, function(err, player) {
+  Player.find({phoneNumber:phoneNumber}, function(err, player) {
     currentPlayerObj = player; //sets this to variable for ease of updating?
     return player;
   });
