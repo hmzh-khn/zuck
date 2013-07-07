@@ -13,7 +13,7 @@ var initGame = function(phoneNumber) {
 	//register user as player in db
 	User.create({phoneNumber: phoneNumber,
 				 gameState: GAMESTATE_STARTED,
-				 money: DEFAULT_MONEY,
+				 currentBalance: DEFAULT_MONEY,
 				 users: DEFAULT_USERS,
 				 employees: DEFAULT_EMPLOYEES,
 				 advertisers: DEFAULT_ADVERTISERS,
@@ -28,6 +28,13 @@ var ipo = function(phoneNumber) {
 // User information
 var help = function(phoneNumber) {
 	//return help manual
+	// if phone number is not listed
+	// Zuck is a text-based Facebook Tycoon game. Text "new" to begin, or
+	// "help" followed by any of these commands: "buy", "develop",
+	// "report", "competition", "ipo"
+	
+	// if phone number is listed
+	// 
 	
 	
 };
