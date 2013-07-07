@@ -1,19 +1,19 @@
 db = require('mongoose'),
   Schema = db.Schema;
 
-var userSchema = mongoose.Schema({
-  phoneNumber: Number,
-  gamestate: Boolean,
+var playerSchema = mongoose.Schema({
+  phone: Number,
+  gameState: Boolean,
   
-  currentBalance: Number,
+  balance: Number,
   users: Number,
   employees: Number,
-  advertisers: Number,
+  rpu: Number,
   competitors: Array,
   features: Array
 });
 
-var User = db.model('User', userSchema);
+var Player = db.model('Player', playerSchema);
 var currentPlayerObj;
 
 //initiate mongo connections
@@ -30,12 +30,12 @@ exports.connect = function connect(url) {
 
 //passed a phoneNumber and a player object
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
-  User.create({phoneNumber: phoneNumber,
+  Player.create({phone: phoneNumber,
     gameState: playerObject.gameState,
-    currentBalance: playerObject.currentBalance,
+    balance: playerObject.balance,
     users: playerObject.users,
     employees: playerObject.employees,
-    advertisers: playerObject.advertisers,
+    rpu: playerObject.rpu,
     competitors: playerObject.competitors,
     features: playerObject.features
   });
@@ -43,7 +43,7 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
 
 //get entire Player object
 exports.getPlayer = function getPlayer(phoneNumber) {
-  User.find({phoneNumber:phoneNumber}, function(err, player) {
+  Player.find({phoneNumber:phoneNumber}, function(err, player) {
     currentPlayerObj = player; //sets this to variable for ease of updating?
     return player;
   });
@@ -58,7 +58,7 @@ exports.set = function set(property, value) {
 
 //update the data
 exports.send = function send() {
-  User.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
+  Player.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
 };
 
 //Add setter functions?

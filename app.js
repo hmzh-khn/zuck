@@ -32,8 +32,13 @@ app.get('/', function(req,res) {
 
 receive = function(req, res) {
   var body = req.query.Body;
+  var from = req.query.From;
+
+  //do stuff with body
+  var response = 'parrot: ' + body;
+
   var resp = new twilio.TwimlResponse();
-  resp.sms("parrot: "+body);
+  resp.sms(response);
   res.send(resp.toString());
 };
 
