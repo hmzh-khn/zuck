@@ -1,4 +1,4 @@
-process.DATA = {};
+
 
 var db = require('./db'),
 	_ = require('underscore');
@@ -22,7 +22,7 @@ var initGame = function(phoneNumber) {
 		features: DEFAULT_FEATURES*/
 	});
 
-	return "New game created for " + phoneNumber + ". See help for more information."
+	return "New game created for " + phoneNumber + "with " +global.DATA[phoneNumber]+ ". See help for more information."
 };
 
 //remove user's game
@@ -54,23 +54,19 @@ var report = function(phoneNumber, options) {
 	var res = "STATUS REPORT\n";
 
 	if(_.isEmpty(options)) {
-		_.each(options, function(value, key) {
-			res += key + ": " + player[key] + "\n";
-		});	
-		return res;
+		console.log('empty');
 	}
-	else {
-		_.each(options, function(value, key) {
-			res += key + ": " + player[key] + "\n";
-		});
-		return res;
-	}
+	_.each(player, function(value, key) {
+		res += key + ": " + player[key] + "\n";
+	});	
+	
+	return res;
 };
 
 //User interaction
-var buy = function(phoneNumber) {
+var buy = function(phoneNumber, offer) {
 	var buyout = require('./purchase');
-	
+	return buyout.negotiation(offer);
 };
 
 var devProject = function(phoneNumber, project) {
