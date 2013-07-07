@@ -7,7 +7,7 @@ balance = ;
 
 if (offer > competitor_worth - tolerance) {
 	(users) = (users) + competitor['users'];
-	(rpu) = (rpu) + competitor['rpu'];
+	(rpu) = (rpu)*((users)/(users + competitor['users'])) + competitor['rpu']*((competitor['users'])/(users + competitor['users']));
 	(emp) = (emp) + competitor['emp'];
 	(balance) = (balance) - offer
 }
