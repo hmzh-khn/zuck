@@ -8,7 +8,7 @@ var competitor = require('./competitorGeneration');
 // Does the first element (the property) have to be a string to redefine it?
 exports.negotiation = function negotiation(offer) {
   if (offer > competitor.worth - competitor.tolerance) {
-  	db.set(users, (player.users + competitor.users);
+  	db.set('users', (player.users + competitor.users);
   	db.set('rpu', (player.rpu)*((player.users)/(player.users + competitor.users)) + competitor.rpu*((competitor.users)/(player.users + competitor.users)));
   	db.set('employees', (player.employees) + competitor.emp);
   	db.set('balance', (player.balance) - offer);

@@ -70,7 +70,8 @@ var buy = function(phoneNumber, offer) {
 };
 
 var devProject = function(phoneNumber, project) {
-	
+	var develop = require('./developModule');
+	develop.applyModule(project);
 };
 
 var commands = {

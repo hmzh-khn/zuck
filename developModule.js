@@ -7,7 +7,7 @@ var modules = {
 	like: new Addon(0, .1, 0, .1),
 	dislike: new Addon(0, .1, 0, .1),
 	video: new Addon(0, .1, 0, 0),
-	interface: new Addon(-.2, .2, -.2, .2),
+	"interface": new Addon(-.2, .2, -.2, .2),
 	custom: new Addon(0, .1, 0, .1),
 	aprFools: new Addon(0, .1, 0, 0),
 	wait: new Addon(0, .1, 0, .1),
@@ -21,12 +21,16 @@ var modules = {
 };
 
 var player = db.getPlayer();
-	
-var rand = Math.random() * (max - min) + min
-db.set(player.phoneNumber,users,(users) + rand*(users))
 
-var rand = Math.random() * (max - min) + min
-db.set(player.phoneNumber,rpu, (rpu) + rand*(rpu))
+exports.applyModule = function applyModule(name) {
+  var mod = modules[name];
+
+  var randUsers = Math.random() * mod.max1 - mod.min1) + mod.min1
+  db.set(player.phoneNumber,'users',(users) + rand*(users))
+
+  var randRpu = Math.random() * (mod.max2 - mod.min2) + mod.min2
+  db.set(player.phoneNumber,'rpu', (player.rpu) + randUsers*(player.rpu))
+  };
+
+  db.set(player.phoneNumber,'employees', player.employees + 10)
 };
-
-db.set(player.phoneNumber,employees, employees + 10)
