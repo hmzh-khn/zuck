@@ -5,7 +5,7 @@ var commands = {
 	"new": initGame,
 	quit: ipo,
 	ipo: ipo,
-	help: help,
+	help1: help1,
 	report: report,
 	buy: buy,
 	develop: devProject
@@ -53,7 +53,7 @@ var ipo = quit = function(phoneNumber) {
 };
 
 // User information
-var help = function(phoneNumber) {
+var help1 = function(phoneNumber) {
 	help = "Zuck is a text-based Facebook Tycoon game.\n Text \
 	'help' followed by any of these commands: 'new', 'buy', 'develop', \
 	'report', 'competition', 'ipo'."

@@ -1,7 +1,7 @@
 db = require('mongoose'),
   Schema = db.Schema;
 
-var playerSchema = mongoose.Schema({
+var playerSchema = db.Schema({
   phone: Number,
   gameState: Boolean,
   
@@ -58,7 +58,7 @@ exports.set = function set(property, value) {
   }
   else {
     var prop = property[0];
-    for(var i = 1; i < property.length - 1) {
+    for(var i = 1; i < property.length - 1; i++) {
       prop = (prop[property[i]])? prop[property[i]] : undefined;
     }
     prop[property[property.length - 1]] = (prop[property - 1])? value : undefined;
