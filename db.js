@@ -1,19 +1,19 @@
 db = require('mongoose'),
   Schema = db.Schema;
 
-var userSchema = mongoose.Schema({
-  phoneNumber: Number,
-  gamestate: Boolean,
+var playerSchema = mongoose.Schema({
+  phone: Number,
+  gameState: Boolean,
   
-  currentBalance: Number,
+  balance: Number,
   users: Number,
   employees: Number,
-  advertisers: Number,
+  rpu: Number,
   competitors: Array,
   features: Array
 });
 
-var User = db.model('User', userSchema);
+var Player = db.model('Player', playerSchema);
 var currentPlayerObj;
 
 //initiate mongo connections
@@ -32,10 +32,10 @@ exports.connect = function connect(url) {
 exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
   User.create({phoneNumber: phoneNumber,
     gameState: playerObject.gameState,
-    currentBalance: playerObject.currentBalance,
+    balance: playerObject.currentBalance,
     users: playerObject.users,
     employees: playerObject.employees,
-    advertisers: playerObject.advertisers,
+    rpu: playerObject.advertisers,
     competitors: playerObject.competitors,
     features: playerObject.features
   });
@@ -58,7 +58,7 @@ exports.set = function set(property, value) {
 
 //update the data
 exports.send = function send() {
-  User.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
+  Player.update({phoneNumber : currentPlayerObj.phoneNumber}, currentPlayerObj);
 };
 
 //Add setter functions?
