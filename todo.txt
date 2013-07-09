@@ -1,0 +1,16 @@
+1. Code is currently a mess from our switching of persistent data models. Hamzah will clean this up. He does not suggect trying to change code until he does so.
+
+2. Stay with global variables until there is a stable codebase. Use ONLY the db module to interact with data.
+
+3. Standardize and impove the parsing for commands that have parameters.
+
+4. Reevaluate the buy and develop command implementations.
+	a. Fix parsing of the commands and arguments
+	b. Improve interaction AI algorithm
+	c. Add complexity to the equations after basic function is integrated.
+
+5. Generate events and be able to send them to the user.
+
+6. Brainstorm new events and provide equations for how they may affect the player's company.
+
+7. Reintegrate a database and hope that it doesn't fail. :p
