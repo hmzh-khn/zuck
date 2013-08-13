@@ -1,6 +1,6 @@
 var db = require('./db')
 var player = db.getPlayer();
-var competitor = require('./competitorGeneration');
+var competitor = require('./gameLogic/competitorGeneration');
 
 // MODIFY exports.purchase = function purchase(offer,competitor) {
 

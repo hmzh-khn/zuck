@@ -1,7 +1,6 @@
 
-var addon = require('./addons');
-db = require('./db'),
-Addon = require('./addons').Addon;
+var Addon = require('./gameLogic/addons').Addon;
+db = require('./db'),;
 
 var modules = {
   chat: new Addon(0, .1, 0, 0),
