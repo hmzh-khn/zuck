@@ -1,48 +1,6 @@
-!!! 5
-html
-body(link='white')
-    head
-      meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
-      link(type='text/css',rel='stylesheet',href='/components/')
-      style(type='text/css')
+extends layout
 
-    body(bgcolor='003366', text='ffffff')
-      //
-        body bgcolor="c6c6c6"
-      table
-        tr(height='100%')
-          td
-            img(src='/images/zuckTEXT.svg', height='100%')
-          td
-            font(size='5')
-              p
-                | Zuck is a tycoon style game played over text message focusing on social networks.
-              p
-                | Every turn, the player is given an action; they can either take the action or skip the turn for a new action.
-              p
-                | Actions usually take the form of new features to be implemented, but the user is also given the option to raise or lower the general obtrusiveness of advertisements, or even buy out rival companies.
-              p
-                a(href='https://github.com/khanh111/zuck', style='color: ffffff;') Project GitHub Repository
-            font(size='4')
-              p
-                | Developed at CodeDay Portland 2 by
-                br
-                | Hamzah Khan
-                br
-                | Hannah Posey-Scholl
-                br
-                | Emma Barber
-                br
-                | Lukas Schwab
-                br
-                | Kevin
-                br
-                | Alex Haupt
-              p
-                | Special Thanks to
-                br
-                | George Matter
-                br
-                | Tyler Menezes
-                br
-                | Puppet Labs
+block content
+  .container
+    img.col-lg-4(src='/images/zuckTEXT.svg')
+    p.lead.col-lg-8 <strong class="text-info">Zuck</strong> is a tycoon style game played over text message focusing on social networks. Every turn, the player is given an action; they can either take the action or skip the turn for a new action. Actions usually take the form of new features to be implemented, but the user is also given the option to raise or lower the general obtrusiveness of advertisements, or even buy out rival companies.
