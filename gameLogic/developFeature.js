@@ -29,6 +29,6 @@ exports.applyModule = function applyModule(name) {
   db.set(player.phoneNumber,'users', player.users + rand*(users));
 
   var randRpu = Math.random() * (mod.max2 - mod.min2) + mod.min2;
-  db.set(player.phoneNumber,'rpu', (player.rpu) + randUsers*(player.rpu));
+  db.set(player.phoneNumber,'revenuePerUser', (player.revenuePerUser) + randUsers*(player.revenuePerUser));
   db.set(player.phoneNumber,'employees', player.employees + 10);
 };

@@ -9,7 +9,7 @@ var competitor = require('./gameLogic/competitorGeneration');
 exports.negotiation = function negotiation(offer) {
   if (offer > competitor.worth - competitor.tolerance) {
   	db.set('users', (player.users + competitor.users);
-  	db.set('rpu', (player.rpu)*((player.users)/(player.users + competitor.users)) + competitor.rpu*((competitor.users)/(player.users + competitor.users)));
+  	db.set('revenuePerUser', (player.revenuePerUser)*((player.users)/(player.users + competitor.users)) + competitor.revenuePerUser*((competitor.users)/(player.users + competitor.users)));
   	db.set('employees', (player.employees) + competitor.emp);
   	db.set('balance', (player.balance) - offer);
     return "Negotiation Successful! \nYou have bought the company\nSee report for new stats!"

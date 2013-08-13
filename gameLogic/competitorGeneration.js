@@ -9,7 +9,7 @@ var player = db.getPlayer();
 exports.competitorGeneration = function competitorGeneration(competitor_name) {
 
 var competitor.users = Math.random() * (player.users);
-var competitor.rpu = Math.random() * (player.rpu);
+var competitor.revenuePerUser = Math.random() * (player.revenuePerUser);
 var competitor.employees = Math.random() * (player.employees);
 
 var competitor.worth = Math.random() * (player.balance);

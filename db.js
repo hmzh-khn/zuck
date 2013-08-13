@@ -4,11 +4,12 @@ db = require('mongoose'),
 var playerSchema = db.Schema({
   phoneNumber: Number,
   gameState: Boolean,
+  commandHistory: Array,
   
   balance: Number,
   users: Number,
   employees: Number,
-  rpu: Number,
+  revenuePerUser: Number,
   competitors: Array,
   features: Array
 });
@@ -17,7 +18,7 @@ var Player = db.model('Player', playerSchema);
 
 //initiate mongo connections
 exports.connect = function connect(url) {
-  url = 'mongodb://localhost/zuck';
+  url = url || 'mongodb://localhost/zuck';
 
   db.connect(url, function(err, res) {
     console.log('ran connect function');
@@ -26,6 +27,7 @@ exports.connect = function connect(url) {
     } 
     else {
       console.log('connection denied');
+
     }
   });
 };
@@ -37,7 +39,7 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
     balance: playerObject.balance || 500,
     users: playerObject.users || 5,
     employees: playerObject.employees || 5,
-    rpu: playerObject.rpu || 1,
+    revenuePerUser: playerObject.revenuePerUser || 1,
     competitors: playerObject.competitors || [],
     features: playerObject.features || []
   };
@@ -48,7 +50,7 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
     balance: playerObject.balance,
     users: playerObject.users,
     employees: playerObject.employees,
-    rpu: playerObject.rpu,
+    revenuePerUser: playerObject.revenuePerUser,
     competitors: playerObject.competitors,
     features: playerObject.features
   });*/
