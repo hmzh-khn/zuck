@@ -1,5 +1,13 @@
 extends layout
 
+block activeSelect
+  li
+    a(href='/') Home
+  li.active
+    a(href='developers') Developers
+  li
+    a(href='#contact') Contact Us
+
 block content
   .container
     //a(href='https://github.com/khanh111/zuck', style='color: ffffff;') Zuck GitHub Repository

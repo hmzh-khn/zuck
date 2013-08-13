@@ -16,12 +16,8 @@ html
         a.navbar-brand(href='/') Zuck
         .nav-collapse.collapse
           ul.nav.navbar-nav
-            li.active
-              a(href='/') Home
-            li
-              a(href='developers') Developers
-            li
-              a(href='#contact') Contact Us
+            block activeSelect
+            //- this block sets the active class that shades the navbtn
           ul.nav.nav-bar.pull-right
             li.pull-right
               a(href="https://github.com/khanh111/zuck",target="blank")
