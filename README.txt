@@ -1,23 +1,18 @@
-=============
-DATABASE API
-=============
+Zuck is a tycoon style game played over text message focusing on social networks.
 
-exports.connect
---------------------------
-Initiate connection to MongoDB.
+Every turn, the player is given an action; they can either take the action or skip the turn for a new action.
 
-exports.initPlayer(phoneNumber, playerObject)
---------------------------
-Adds a new player to the database.
+Actions usually take the form of new features to be implemented, but the user is also given the option to raise or lower the general obtrusiveness of advertisements, or even buy out rival companies.
 
-exports.getPlayer(phoneNumber)
---------------------------
-Returns the player object associated with phoneNumber and sets it as the current user.
+Developed at CodeDay Portland 2 by
+	Hamzah Khan
+	Hannah Posey-Scholl
+	Emma Barber
+	Lukas Schwab
+	Kevin
+	Alex Haupt
 
-exports.set(property, value)
---------------------------
-Within the current player, sets property to value.
-
-exports.send()
---------------------------
-Sends changes to MongoDB. THIS MUST BE CALLED AFTER CHANGING DATA OR YOUR CHANGES WILL NOT SAVE.
+Special Thanks to
+	George Matter
+	Tyler Menezes
+	Puppet Labs
