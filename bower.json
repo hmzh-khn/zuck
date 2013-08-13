@@ -1,0 +1,19 @@
+{
+  "name": "zuck",
+  "version": "0.0.1-20",
+  "main": [
+    "app.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "bootstrap": ">= 3.0.0"
+  },
+  "readmeFilename": "README.md",
+  "description": "See index.html",
+    "repository": {
+    "type": "git",
+    "url": "git://github.com/khanh111/zuck.git"
+  }
+}
