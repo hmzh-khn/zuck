@@ -4,21 +4,22 @@ body
   font 14px "Lucida Grande", Helvetica, Arial, sans-serif
   background-color #c6c6c6
   color #ffffff
+  padding-top 80px
 a
   color #00B7FF
 
 img.col-lg-4
-  margin-top 110px
   width 300px
-  //float left
-  //display inline
+  margin-top 30px
 
 p.lead
-  margin-top 110px
   font-family Garamond,Tahoma,sans-serif
   font-size 2.5rem
 
-a visited
+img.col-lg-4 + p.lead
+  margin-top 30px
+
+a:visited
   color white
 
 /* Wrapper for page content to push down footer */
@@ -27,12 +28,13 @@ a visited
   height auto !important
   height 100%
   /* Negative indent footer by its height */
-  margin 0 auto -50px
+  margin 0 auto -80px
   /* Pad bottom by footer height */
-  padding 0 0 50px
+  padding 0 0 80px
 
 /* Set the fixed height of the footer here */
 #footer
+  margin-top 30px
   padding-top 16px
   text-align center
   height 50px
@@ -45,3 +47,12 @@ a > .img-circle //social icons
 
 a > p.pull-right
   margin 5px 10px
+
+li
+  list-style none
+.developer
+  color white
+  h5
+    text-indent 30px
+    a
+      color #428bca

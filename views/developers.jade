@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  .container
+    //a(href='https://github.com/khanh111/zuck', style='color: ffffff;') Zuck GitHub Repository
+    .col-lg-6
+      h3.text-primary Developed at CodeDay Portland 2 by
+        ul
+          li.developer
+            h4 Hamzah Khan
+            +bio('khanh111', 'Sys Admin, Front-End Developer, Back-End Developer', 'student @ Catlin Gabel School', '@JSandrobots1540')
+          li.developer
+            h4 Hannah Posey-Scholl
+            +bio('hkps','Developer', 'student')
+          li.developer
+            h4 Emma Barber
+            +bio('vrashkal','Back-End Developer', 'student')
+          li.developer
+            h4 Lukas Schwab
+            +bio('lukasgs','Front-End Developer, Logic Design', 'student @ Lincoln High School')
+          li.developer
+            h4 Kevin Kang
+            +bio('kevkev97kk','Logic Design', 'student')
+          li.developer
+            h4 Alex Haupt
+            +bio('AT777T','Logic Design', 'student')
+
+    .col-lg-6
+      h3.text-primary Special Thanks to
+        ul
+          li.developer
+            h4 George Matter
+            +bio('MadhATTER6', 'Assistance with Twilio', 'student @ University of Washington')
+          li.developer
+            h4 Tyler Menezes
+            +bio('tylermenezes', 'Server Provider, Idea Creation', 'organizer @ StudentRND', '@tylermenezes')
+          li.developer
+            h4 Puppet Labs
+            +bio('puppetlabs', 'Environment Provider', 'cool tech company in Portland, OR', '@puppetlabs')
+
+
+mixin bio(github, role, job, twitter, blurb)
+  - if(twitter)
+    - var twitUrl = twitter.replace('@','');
+    h5 Twitter: <a href='http://twitter.com/#{twitUrl}' target='blank'>#{twitter}</a>
+  h5 GitHub: <a href='http://github.com/#{github}' target='blank'>#{github}</a>
+  h5 Role: #{role}
+  h5 Job: #{job}
+  - if(blurb)
+    h5.blurb: #{blurb}

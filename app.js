@@ -34,9 +34,14 @@ app.configure('development', function(){
  
 //var dbBarf = db.getPlayer('+15037296270');
 
-app.get('/', function(req,res) {
-    console.log(global);
-    res.render('index.jade');
+//main page
+app.get('/', function(req, res) {
+  res.render('index.jade');
+});
+
+//developers page
+app.get('/developers', function(req, res) {
+  res.render('developers.jade');
 });
 
 var receive = function receive (req, res) {
