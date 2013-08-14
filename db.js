@@ -1,3 +1,44 @@
+/******************************
+DB DOCUMENTATION
+
+  The db module facilitates all interactions between the Mongo database 
+and the express server. It uses Mongoose to create a schema that is 
+created whenever a unique user starts a game, and is destroyed whenever
+a user ends or loses a game.
+
+db#connect(url)
+  1. Creates a connection to the Mongo server using Mongoose
+  2. Successful connections log out `Connected to Mongo`
+  3. Errors print the error and shut down the server
+
+db#playerExists(phoneNumber)
+  1. Checks and returns (T/F) whether a user has an ongoing game
+
+db#initPlayer(phoneNumber)
+  1. This is called when a player does not have an ongoing game
+    a. If the game is ongoing, return some type of confirmation message
+       to the user to ask if they want to end current game and begin anew
+  2. Create a new instance of a Player object, using default values
+  3. Return the player object?
+
+db#getPlayer || db#get(phoneNumber)
+  1. Retrieve entire player object
+  2. Return to caller
+
+db#get(phoneNumber, object of attributes to get)
+  1. This would get the attributes of the player that are asked for
+  2. It would save server memory(not by much)
+  3. Is this worth the effort? (I don't think so)
+
+db#set(phoneNumber, valuesObject)
+  1. Update the Player with new values from the object provided
+
+
+Should I make these asynchronously call functions after completion?
+Might be a good idea
+
+******************************/
+
 db = require('mongoose'),
   Schema = db.Schema;
 
