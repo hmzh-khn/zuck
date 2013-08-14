@@ -3,10 +3,10 @@ var express = require('express'),
   path = require('path'),
   stylus = require('stylus'),
   db = require('./db'),
-  twilio = require('twilio'),
+  twil = require('./twil'),
   command = require('./command');
 
-var client = twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
+var client = twil.twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
 
 var app = express();
 
@@ -44,19 +44,8 @@ app.get('/developers', function(req, res) {
   res.render('developers.jade');
 });
 
-var receive = function receive (req, res) {
-  var body = req.query.Body;
-  var from = req.query.From;
-
-  var response = command.parse(from, body);
-
-  var resp = new twilio.TwimlResponse();
-  resp.sms(response);
-  res.send(resp.toString());
-};
-
-app.get('/receive', receive);
-app.post('/receive', receive);
+app.get('/receive', twil.receive);
+app.post('/receive', twil.receive);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
