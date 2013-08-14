@@ -1,4 +1,9 @@
+/*******************************
+EXPORT EACH COMMAND FROM HERE
 
+Move the parser to a app.js?
+
+*******************************/
 
 var db = require('./db'),
 	_ = require('underscore');
