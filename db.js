@@ -9,6 +9,7 @@ a user ends or loses a game.
 db#connect(url)
   1. Creates a connection to the Mongo server using Mongoose
   2. Successful connections log out `Connected to Mongo`
+    a. calls back an optional function
   3. Errors print the error and shut down the server
 
 db#playerExists(phoneNumber)
@@ -33,7 +34,7 @@ db#get(phoneNumber, object of attributes to get)
 db#set(phoneNumber, valuesObject)
   1. Update the Player with new values from the object provided
 
-
+======== BIG IDEA ==========
 Should I make these asynchronously call functions after completion?
 Might be a good idea
 
