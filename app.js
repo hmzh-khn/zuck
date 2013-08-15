@@ -4,9 +4,10 @@ var express = require('express'),
   stylus = require('stylus'),
   db = require('./db'),
   twil = require('./twil'),
-  command = require('./command');
+  command = require('./command'),
+  CONFIG = (./config.json);
 
-var client = twil.twilio('AC4ae2ff325dad1c269fac9fa9935cb6d0', '63f51e3d32ed6d0ebbaa46c6359e9cbe');
+var client = twil.twilio(CONFIG.hannah_twilio_sid, CONFIG.hannah_twilio_auth_token);
 
 var app = express();
 
