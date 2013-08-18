@@ -3,15 +3,21 @@ var express = require('express'),
   path = require('path'),
   stylus = require('stylus'),
   db = require('./db'),
-  twil = require('./twil'),
-  command = require('./command'),
-  CONFIG = (./config.json);
+  CONFIG = require('./config.json');
 
-var client = twil.twilio(CONFIG.hannah_twilio_sid, CONFIG.hannah_twilio_auth_token);
+process.env['TWILIO_ACCOUNT_SID'] = CONFIG.twilio_sid;
+process.env['TWILIO_AUTH_TOKEN'] = CONFIG.twilio_auth_token;
+process.env['TWILIO_PHONE_NUMBER'] = CONFIG.twilio_phone_number;
+
+//continue requiring modules
+var twil = require('./twil'),
+  command = require('./command');
 
 var app = express();
 
 global.DATA = {};
+
+twil.send('+15035629690', 'omg does it work?');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);

@@ -1,4 +1,5 @@
 {
   "twilio_sid": "A Twilio SID",
-  "twilio_auth_token": "Your Twilio Authorization Token"
+  "twilio_auth_token": "Your Twilio Authorization Token",
+  "twilio_phone_number": "Your Twilio phone number"
 }
