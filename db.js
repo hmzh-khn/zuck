@@ -6,7 +6,9 @@ and the express server. It uses Mongoose to create a schema that is
 created whenever a unique user starts a game, and is destroyed whenever
 a user ends or loses a game.
 
-db#connect(url)
+ALL FUNCTIONS HAVE ASYNC AND SYNC VERSIONS
+
+db#connect(url, callback)
   1. Creates a connection to the Mongo server using Mongoose
   2. Successful connections log out `Connected to Mongo`
     a. calls back an optional function
@@ -32,18 +34,22 @@ db#get(phoneNumber, object of attributes to get)
   3. Is this worth the effort? (I don't think so)
 
 db#set(phoneNumber, valuesObject)
-  1. Update the Player with new values from the object provided
-
-======== BIG IDEA ==========
-Should I make these asynchronously call functions after completion?
-Might be a good idea
+  1. Update the Player with new values from the object provide
 
 ******************************/
 
-db = require('mongoose'),
-  Schema = db.Schema;
+var db = require('mongoose');
+var Schema = db.Schema;
+//checks for async
+_.mixin({
+  isCallback: function isCallback(callback) {
+    if(!_.isFunction(callback)) {
+      throw new Error("Can't call async function w/ callback function");
+    }
+  }
+});
 
-var playerSchema = db.Schema({
+var playerSchema = new Schema({
   phoneNumber: Number,
   gameState: Boolean,
   commandHistory: Array,
@@ -59,18 +65,45 @@ var playerSchema = db.Schema({
 var Player = db.model('Player', playerSchema);
 
 //initiate mongo connections
-exports.connect = function connect(url) {
+//callback(err)
+exports.connect = function connect(url, callback) {
   url = url || 'mongodb://localhost/zuck';
+  _.isCallback(callback);
 
-  db.connect(url, function(err, res) {
-    console.log('ran connect function');
-    if (!err) {
-      console.log('connected to mongo!');
-    } 
-    else {
-      console.log('connection denied');
+  db.connect(url, function(err) {
+    console.log('Connected to mongo!');
+    callback(err);
+  });
+};
 
-    }
+exports.connectSync = function connectSync(url) {
+  url = url || 'mongodb://localhost/zuck';
+  db.connect(url, function(err) {
+    if(err) return false;
+    else return true;
+  });
+};
+
+exports.exists = function exists(phoneNumber, callback) {
+  _.isCallback(callback);
+
+  Player.find({'phoneNumber': phoneNumber}, function(err, player) {
+    var exists = false;
+    if(player) exists = true;
+
+    callback(err, exists);
+  });
+};
+
+exports.existsSync = function exists(phoneNumber) {
+
+  Player.find({'phoneNumber': phoneNumber}, function(err, player) {
+    if(err) throw new Error('Error while checking if '+phoneNumber+' exists');
+
+    var exists = false;
+    if(player) exists = true;
+
+    return exists;
   });
 };
 
