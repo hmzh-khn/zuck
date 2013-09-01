@@ -5,19 +5,18 @@ var express = require('express'),
   db = require('./db'),
   CONFIG = require('./config.json');
 
+//This is the only way I can securely do this (twilio doesnt allow any variables to set the options except process obj)
 process.env['TWILIO_ACCOUNT_SID'] = CONFIG.twilio_sid;
 process.env['TWILIO_AUTH_TOKEN'] = CONFIG.twilio_auth_token;
 process.env['TWILIO_PHONE_NUMBER'] = CONFIG.twilio_phone_number;
 
 //continue requiring modules
-var twil = require('./twil'),
+  var twil = require('./twil');
   command = require('./command');
 
 var app = express();
 
 global.DATA = {};
-
-twil.send('+15035629690', 'omg does it work?');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 8000);
@@ -51,8 +50,23 @@ app.get('/developers', function(req, res) {
   res.render('developers.jade');
 });
 
-app.get('/receive', twil.receive);
-app.post('/receive', twil.receive);
+var listenForTexts = function(req, res) {
+  var msgInfo = twil.receiveInfo(req);
+
+  if(msgInfo) {
+    /* Call command parsing methods here */
+    var returnMessage = command.parse(msgInfo.from, msgInfo.body);
+
+    twil.send(msgInfo.from, returnMessage);
+  }
+  else {
+    console.error('ERROR: No message text or no phoneNumber');
+    twil.send('ERROR: No message text or no phoneNumber!');
+  }
+};
+
+app.get('/receive', listenForTexts);
+app.post('/receive', listenForTexts);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
