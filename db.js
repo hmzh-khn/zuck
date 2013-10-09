@@ -33,27 +33,20 @@ db#get(phoneNumber, object of attributes to get)
   2. It would save server memory(not by much)
   3. Is this worth the effort? (I don't think so)
 
-db#set(phoneNumber, valuesObject)
+db#set(phoneNumber, valuesObject) ALIAS: #update
   1. Update the Player with new values from the object provide
+
+STATES HAVE NOT YET BEEN IMPLEMENTED
+db#updateState(phoneNumber, newState)
+  1. if there is a txting conversation happening, update the state?
 
 ******************************/
 
 var db = require('mongoose');
+var _ = require('underscore');
 var Schema = db.Schema;
-//checks for async
-_.mixin({
-  isCallback: function isCallback(callback) {
-    if(!_.isFunction(callback)) {
-      throw new Error("Can't call async function w/ callback function");
-    }
-  }
-});
 
-var playerSchema = new Schema({
-  phoneNumber: Number,
-  gameState: Boolean,
-  commandHistory: Array,
-  
+var companySchema = new Schema({
   balance: Number,
   users: Number,
   employees: Number,
@@ -62,16 +55,23 @@ var playerSchema = new Schema({
   features: Array
 });
 
+//BUILD ONTO THIS AS THE PROJECT MATURES
+var playerSchema = new Schema({
+  phoneNumber: Number,
+  gameState: Boolean,
+  commandHistory: [Array],
+  
+  company: companySchema
+});
+
 var Player = db.model('Player', playerSchema);
 
 //initiate mongo connections
 //callback(err)
 exports.connect = function connect(url, callback) {
   url = url || 'mongodb://localhost/zuck';
-  _.isCallback(callback);
 
   db.connect(url, function(err) {
-    console.log('Connected to mongo!');
     callback(err);
   });
 };
@@ -85,7 +85,6 @@ exports.connectSync = function connectSync(url) {
 };
 
 exports.exists = function exists(phoneNumber, callback) {
-  _.isCallback(callback);
 
   Player.find({'phoneNumber': phoneNumber}, function(err, player) {
     var exists = false;
@@ -119,7 +118,6 @@ exports.initPlayer = function initPlayer(phoneNumber, playerObject) {
     features: playerObject.features || []
   };
 
-  console.log(global.DATA);
     /*Player.create({
     phoneNumber: phoneNumber,
     balance: playerObject.balance,

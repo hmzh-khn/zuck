@@ -1,6 +1,7 @@
 var express = require('express'),
   http = require('http'),
   path = require('path'),
+  _ = require('underscore'),
   stylus = require('stylus'),
   db = require('./db'),
   CONFIG = require('./config.json');
@@ -15,6 +16,11 @@ process.env['TWILIO_PHONE_NUMBER'] = CONFIG.twilio_phone_number;
   command = require('./command');
 
 var app = express();
+
+db.connect('mongodb://localhost/zuck', function(err) {
+  if(!err) console.log('\n\n\n=============== connected to mongo! ================\n\n');
+  else killProc('Connection to mongo database failed.');
+});
 
 global.DATA = {};
 
@@ -71,3 +77,10 @@ app.post('/receive', listenForTexts);
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+var killProc = function killProc(message) {
+  console.log(message);
+  console.log('\nExiting...');
+  process.exit();
+};
+
